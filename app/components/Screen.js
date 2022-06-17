@@ -1,7 +1,7 @@
-import { View, StyleSheet, StatusBar } from "react-native";
+import { ScrollView, StyleSheet, StatusBar } from "react-native";
 
 const Screen = ({ children }) => {
-  return <View style={styles.container}>{children}</View>;
+  return <ScrollView style={styles.container}>{children}</ScrollView>;
 };
 
 const styles = StyleSheet.create({

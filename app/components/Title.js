@@ -5,7 +5,7 @@ const Title = ({ children, numberOfLines = 2, size = 18 }) => {
   return (
     <Text
       numberOfLines={numberOfLines}
-      style={{ fontWeight: "bold", fontsize: size }}
+      style={{ fontWeight: "bold", fontSize: size }}
     >
       {children}
     </Text>

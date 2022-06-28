@@ -11,20 +11,24 @@ import newsApi from "../../api/newsApi";
 import HorizontalList from "../lists/HorizontalList";
 import Close from "../common/Close";
 import { useNavigation } from "@react-navigation/native";
+import Loader from "../common/Loader";
 
 const { width, height } = Dimensions.get("window");
 
 const NewsDetail = ({ route }) => {
   const [news, setNews] = useState({});
   const [relatedNews, setRelatedNews] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const { id: postId, category: postCategory } = route.params.item;
 
   const navigation = useNavigation();
 
   const fetchPost = async (id) => {
+    setLoading(true);
     const result = await newsApi.getSingle(id);
     setNews(result);
+    setLoading(false);
   };
 
   const fetchRelatedPosts = async (category) => {
@@ -41,6 +45,7 @@ const NewsDetail = ({ route }) => {
 
   return (
     <>
+      <Loader visible={loading} />
       <ScrollView>
         <Image style={styles.image} source={{ uri: thumbnail }} />
         <View style={styles.contentContainer}>

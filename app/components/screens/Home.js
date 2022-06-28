@@ -8,6 +8,7 @@ import BreakingNews from "../BreakingNews";
 import PoliticalNews from "../PoliticalNews";
 import TechNews from "../TechNews";
 import EntertainmentNews from "../EntertainmentNews";
+import Loader from "../common/Loader";
 
 const Home = () => {
   const {
@@ -16,17 +17,21 @@ const Home = () => {
     politicalNews,
     techNews,
     entertainmentNews,
+    loading,
   } = useNews();
 
   return (
-    <Screen>
-      <SearchBar />
-      <FeaturedNews item={featuredNews} />
-      <BreakingNews data={breakingNews} />
-      <PoliticalNews data={politicalNews} />
-      <TechNews data={techNews} />
-      <EntertainmentNews data={entertainmentNews} />
-    </Screen>
+    <>
+      <Loader visible={loading} />
+      <Screen>
+        <SearchBar />
+        <FeaturedNews item={featuredNews} />
+        <BreakingNews data={breakingNews} />
+        <PoliticalNews data={politicalNews} />
+        <TechNews data={techNews} />
+        <EntertainmentNews data={entertainmentNews} />
+      </Screen>
+    </>
   );
 };
 

@@ -26,7 +26,19 @@ const getByCategory = async (category, qty) => {
   }
 };
 
+const getSingle = async (id) => {
+  try {
+    const response = await apiClient.get(`/news/single/${id}`);
+    if (response.data.success) {
+      return response.data.news;
+    }
+  } catch (error) {
+    console.log("Error while getting single news", error.message);
+  }
+};
+
 export default {
   getAll,
   getByCategory,
+  getSingle,
 };

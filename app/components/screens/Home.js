@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import useNews from "../../hooks/useNews";
 import Screen from "../common/Screen";
 import SearchBar from "../SearchBar";
@@ -11,6 +11,8 @@ import EntertainmentNews from "../EntertainmentNews";
 import Loader from "../common/Loader";
 
 const Home = () => {
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+
   const {
     featuredNews,
     breakingNews,
@@ -23,8 +25,8 @@ const Home = () => {
   return (
     <>
       <Loader visible={loading} />
-      <Screen>
-        <SearchBar />
+      <Screen isSearchFocused={isSearchFocused}>
+        <SearchBar setIsSearchFocused={setIsSearchFocused} />
         <FeaturedNews item={featuredNews} />
         <BreakingNews data={breakingNews} />
         <PoliticalNews data={politicalNews} />

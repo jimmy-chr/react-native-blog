@@ -37,8 +37,20 @@ const getSingle = async (id) => {
   }
 };
 
+const searchPost = async (query) => {
+  if (!query) return {};
+
+  try {
+    const response = await apiClient.post(`/news/search/${query}`);
+    return response.data;
+  } catch (error) {
+    console.log("Error while searching news", error.message);
+  }
+};
+
 export default {
   getAll,
   getByCategory,
   getSingle,
+  searchPost,
 };

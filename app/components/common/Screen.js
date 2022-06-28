@@ -1,7 +1,16 @@
 import { ScrollView, StyleSheet, StatusBar } from "react-native";
 
-const Screen = ({ children }) => {
-  return <ScrollView style={styles.container}>{children}</ScrollView>;
+const Screen = ({ children, isSearchFocused }) => {
+  const keyboardShouldPersistTaps = isSearchFocused ? "always" : "never";
+  return (
+    <ScrollView
+      scrollEnable={!isSearchFocused}
+      style={styles.container}
+      keyboardShouldPersistTaps={keyboardShouldPersistTaps}
+    >
+      {children}
+    </ScrollView>
+  );
 };
 
 const styles = StyleSheet.create({
